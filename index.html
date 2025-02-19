@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPECIAL CARDS</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fbe9e7;
+        }
+
+        /* Card Container */
+        .card {
+            position: relative;
+            width: 500px;
+            height: 600px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
+            transition: 1s;
+            margin-bottom: 20px;
+        }
+
+        .card.open {
+            transform: translateX(50%);
+        }
+
+        .imgBox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            background: #f3e8f2;
+            transition: 1s;
+            box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .card.open .imgBox {
+            transform: rotateY(-180deg);
+        }
+
+        .imgBox img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .imgBox img:nth-child(2) {
+            transform: rotateY(-180deg);
+        }
+
+        /* Inside the Card */
+        .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Notebook Paper */
+        .paper {
+            position:absolute;
+            height: 90%;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 0px 5px 0px #888;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .paper::before {
+        
+            position: absolute;
+            left: 10px;
+            height: 100%;
+            width: 2px;
+            background: rgba(255, 0, 0, 0.4);
+        }
+
+        .lines {
+            margin-top: 11px;
+            height:90%;
+            width: 100%;
+            background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+            padding: 10px;
+        }
+
+        .text {
+            position:absolute;
+            width: 80%;
+            height: 80%;
+            top: 40px;
+            left: 45px;
+            right: 10px;
+            bottom: 10px;
+            font-size: 14px;
+            line-height: 24px;
+            font-family: 'Indie Flower',cursive;
+            overflow: auto;
+            outline: none;
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            background-color: #0c0c0c;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0f0f0f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card" id="card">
+        <div class="imgBox">
+            <img src="https://th.bing.com/th/id/R.2dc346eb40b7e4e61e5abe7f1f394bd5?rik=7Jjm%2f%2bKBG7lWIg&pid=ImgRaw&r=0.jpg">
+            <img src="https://th.bing.com/th/id/R.cf7787a23ec6d9a0f9db11ea97768d64?rik=Z4JK%2bWNhdksObg&pid=ImgRaw&r=0.jpg">
+
+           </div>
+        <div class="details">
+            <!-- Notebook Paper -->
+            <div class="paper">
+                <div class="lines">
+                    <div class="text">
+                        Hey! I can’t believe it’s been six months already! 🎉<br>
+                         I just wanted to take a moment to appreciate you and everything you bring to my life.
+                          Your calls and texts mean so much to me, and I love that you always call me mamaa. ❤<br>
+                           It really shows how much effort you put into our friendship,
+                            and I’m so grateful for that. <br>
+
+Thank you for always being there and for making me feel special. <br>
+🌟 I cherish the moments we’ve shared,
+ and I’m looking forward to creating even more memories together in the future.<br>
+ Here’s to many more months of laughter, support, and amazing conversations!<br>
+  You truly make my days brighter! 😊💖<br>
+  <br>YOURS TRULY 
+                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="openCard()">Open</button>
+        <button class="button" onclick="closeCard()">Close</button>
+    </div>
+
+    <script>
+        function openCard() {
+            document.getElementById("card").classList.add("open");
+        }
+
+        function closeCard() {
+            document.getElementById("card").classList.remove("open");
+        }
+    </script>
+
+</body>
+</html>
